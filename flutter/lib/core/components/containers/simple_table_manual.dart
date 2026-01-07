@@ -2,6 +2,7 @@ import '../../api/component.dart';
 import '../../api/component_context.dart';
 import '../../api/component_event.dart';
 import '../../api/component_id.dart';
+import '../../log.dart';
 import '../json_utils.dart';
 
 /// Display mode for SimpleTableManual.
@@ -95,6 +96,8 @@ class SimpleTableManualComponent extends BaseComponent implements HideableCompon
         final id = int.tryParse(idStr);
         if (id != null) {
           ids.add(id);
+        } else {
+          Log.w('SimpleTableManualComponent', 'Failed to parse component ID: $idStr');
         }
       }
       final cellComponents = context.componentManager.getComponentsByIds(
