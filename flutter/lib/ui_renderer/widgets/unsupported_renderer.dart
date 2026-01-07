@@ -43,15 +43,11 @@ class UnsupportedRenderer implements ComponentRenderer<UnsupportedComponent> {
   }
 
   String _causeToString(UnsupportedCause cause) {
-    switch (cause) {
-      case UnsupportedCause.missingJavascriptImplementation:
-        return 'Missing JavaScript implementation';
-      case UnsupportedCause.missingComponentDefinition:
-        return 'Missing component definition';
-      case UnsupportedCause.missingComponentRenderer:
-        return 'Missing component renderer';
-      case UnsupportedCause.unknownCause:
-        return 'Unknown cause';
-    }
+    return switch (cause) {
+      UnsupportedCause.missingJavascriptImplementation => 'Missing JavaScript implementation',
+      UnsupportedCause.missingComponentDefinition => 'Missing component definition',
+      UnsupportedCause.missingComponentRenderer => 'Missing component renderer',
+      UnsupportedCause.unknownCause => 'Unknown cause',
+    };
   }
 }

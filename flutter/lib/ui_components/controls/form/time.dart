@@ -106,6 +106,13 @@ class TimeField extends StatelessWidget {
   }
 
   String _formatTime(TimeOfDay time) {
-    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+    if (clockFormat == '24') {
+      return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+    } else {
+      // 12-hour format with AM/PM
+      final hour = time.hourOfPeriod == 0 ? 12 : time.hourOfPeriod;
+      final period = time.period == DayPeriod.am ? 'AM' : 'PM';
+      return '${hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} $period';
+    }
   }
 }

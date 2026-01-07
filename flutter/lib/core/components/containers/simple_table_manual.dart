@@ -89,9 +89,14 @@ class SimpleTableManualComponent extends BaseComponent implements HideableCompon
     return getJSONArray(props, 'rows').map((jsonElement) {
       final rowJson = jsonElement as Map<String, dynamic>;
       final componentIds = getJSONArray(rowJson, 'cellComponentIds');
-      final ids = List.generate(componentIds.length, (index) {
-        return int.parse(getStringFromArray(componentIds, index));
-      });
+      final ids = <int>[];
+      for (int index = 0; index < componentIds.length; index++) {
+        final idStr = getStringFromArray(componentIds, index);
+        final id = int.tryParse(idStr);
+        if (id != null) {
+          ids.add(id);
+        }
+      }
       final cellComponents = context.componentManager.getComponentsByIds(
         ids.map((id) => ComponentId(id)).toList(),
       );
