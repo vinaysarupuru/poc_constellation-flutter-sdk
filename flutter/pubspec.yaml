@@ -1,0 +1,26 @@
+name: pega_constellation_sdk
+description: Pega Constellation Mobile SDK for Flutter. Embed Pega forms into existing Flutter applications with customizable UI.
+version: 1.0.0
+homepage: https://github.com/vinaysarupuru/poc_constellation-flutter-sdk
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.1
+  json_annotation: ^4.8.1
+  webview_flutter: ^4.4.2
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
